@@ -7,7 +7,13 @@ from flask import abort, flash, redirect, render_template
 from . import app, db
 from .forms import URL_map_form
 from .models import URL_map
-from .contants import DEFAULT_CUSTOM_LINK_LENGTH, HOST, SHORT_LINK_REGEXP
+from .contants import DEFAULT_CUSTOM_LINK_LENGTH, HOST, SHORT_LINK_MAX_LENGTH, SHORT_LINK_REGEXP
+
+
+def is_shortcut_valid(shortcut):
+    if len(shortcut) <= SHORT_LINK_MAX_LENGTH and re.search(SHORT_LINK_REGEXP, shortcut):
+        return True
+    return False
 
 
 def is_shortcut_exists(shortcut):

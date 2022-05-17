@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, URLField
-from wtforms.validators import DataRequired, Optional, URL, Regexp
+from wtforms.validators import DataRequired, Length, Optional, URL, Regexp
 
-from .contants import SHORT_LINK_REGEXP
+from .contants import SHORT_LINK_MAX_LENGTH, SHORT_LINK_REGEXP
 
 CUSTOM_ID_VALIDATION_MESSAGE = ('Которткая ссылка должна:\n'
                                 '- состоять из букв латинского алфавита или цифр\n'
@@ -18,6 +18,7 @@ class URL_map_form(FlaskForm):
     custom_id = StringField(
         label='Ваш вариант короткой ссылки',
         validators=[Optional(),
+                    Length(max=SHORT_LINK_MAX_LENGTH, message=CUSTOM_ID_VALIDATION_MESSAGE),
                     Regexp(SHORT_LINK_REGEXP,
                            message=CUSTOM_ID_VALIDATION_MESSAGE)]
     )
