@@ -129,6 +129,3 @@ dmypy.json
 .pyre/
 
 .vscode
-
-# static files
-yacut/static
