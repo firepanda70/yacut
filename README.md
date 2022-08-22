@@ -46,6 +46,8 @@ pip install -r requirements.txt
 ```
 FLASK_APP=yacut
 FLASK_ENV=development # или production
+SECRET_KEY=secret
+DATABASE_URI=<Ссылка на базу данных, по умолчанию sqlite:///db.sqlite3>
 ```
 
 ## Использование
@@ -65,4 +67,3 @@ FLASK_ENV=development # или production
 - Python 3
 - Flask
 - SQLAlchemy
-- SQLite
